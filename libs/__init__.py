@@ -1,4 +1,9 @@
-from .a import A
-from .libB import B
+from .wxauto import WeChat
+from .utils import *
 
-__all__ = ["A", "B"]
+__version__ = VERSION
+
+__all__ = [
+    'WeChat', 
+    'VERSION',
+]

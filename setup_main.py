@@ -1,4 +1,5 @@
 import os
+import shutil
 
 # 项目根目录下不用（能）转译的py文件（夹）名，用于启动的入口脚本文件一定要加进来
 ignore_files = [
@@ -32,6 +33,11 @@ package_path = os.path.join(BASE_DIR, package_name)
 # 若没有打包文件夹，则生成一个
 if not os.path.exists(package_path):
     os.mkdir(package_path)
+else:
+    # 删除重新建
+    shutil.rmtree(package_path)
+    os.mkdir(package_path)
+
 translate_pys = []
 
 
