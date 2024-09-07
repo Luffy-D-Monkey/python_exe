@@ -1,0 +1,7 @@
+## 安装 exe 打包工具`pip install pyinstaller`
+
+## 安装必要以来  `pip install -r requirements.txt`
+
+## 执行打包命令 `python build_exe.py`，可以看到再 dist 中已经打包好了一个 server.exe 
+
+## 运行 exe，`dist/server.exe`

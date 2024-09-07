@@ -1,0 +1,6 @@
+.vscode
+.conda
+__pycache__
+build_pyd
+build
+dist
