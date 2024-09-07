@@ -5656,7 +5656,7 @@ class Control():
         return self.Element.CurrentName or ''   # CurrentName may be None
 
     @property
-    def NativeWindowHandle(self) -> str:
+    def NativeWindowHandle(self) -> int:
         """
         Property NativeWindowHandle.
         Call IUIAutomationElement::get_CurrentNativeWindowHandle.
@@ -5758,7 +5758,7 @@ class Control():
         """
         return self.Element.GetCurrentPropertyValueEx(propertyId, ignoreDefaultValue)
 
-    def GetRuntimeId(self) -> List[int]:
+    def GetRuntimeId(self) -> Tuple[int]:
         """
         Call IUIAutomationElement::GetRuntimeId.
         Return List[int], a list of int.
