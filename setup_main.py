@@ -30,13 +30,6 @@ package = True
 package_name = "build_pyd"
 # 打包文件夹路径 (package = True 时有效)
 package_path = os.path.join(BASE_DIR, package_name)
-# 若没有打包文件夹，则生成一个
-if not os.path.exists(package_path):
-    os.mkdir(package_path)
-else:
-    # 删除重新建
-    shutil.rmtree(package_path)
-    os.mkdir(package_path)
 
 translate_pys = []
 
@@ -133,7 +126,7 @@ def batch_rename(src_path):
             batch_rename(old_name)
         if filename[-4:] == ".pyd" or filename[-3:] == ".so":
             old_pyd = filename.split(".")
-            new_pyd = str(old_pyd[0]) + "." + str(old_pyd[2])
+            new_pyd = str(old_pyd[0]) + "." + str(old_pyd[len(old_pyd) - 1])
         else:
             continue
         change_name = new_pyd
@@ -145,12 +138,24 @@ def batch_rename(src_path):
         os.rename(old_name, new_name)
 
 
-def run():
+def build_pyd():
     translate_dir(BASE_DIR)
     remove_dir(os.path.join(BASE_DIR, "build"))
+
+    # 若没有打包文件夹，则生成一个
+    if not os.path.exists(package_path):
+        os.mkdir(package_path)
+    else:
+        # 删除重新建
+        shutil.rmtree(package_path)
+        os.mkdir(package_path)
     if package:
         mv_to_packages()
     batch_rename(os.path.join(BASE_DIR, package_name))
+
+
+def run():
+    build_pyd()
 
 
 if __name__ == "__main__":

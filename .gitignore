@@ -4,3 +4,5 @@ __pycache__
 build_pyd
 build
 dist
+server.spec
+*.pyd
